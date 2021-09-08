@@ -1,5 +1,15 @@
 /* jshint esversion: 6 */
 
+//Minimun: Questions 1 - 10; 23; 24
+
+
+// How to use this repo:
+// Fork this repo and clone it to your local machine
+// Open SpecRunner.html in your web browser
+// Code your solutions in recursion.js
+// Review the tests in spec/part1.js and spec/part2.js as necessary
+// Save your work and refresh your browser to check for passing/failing tests
+
 // Solve the following prompts using recursion.
 
 // 1. Calculate the factorial of a number. The factorial of a non-negative integer n,
@@ -7,6 +17,20 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  // edge case, n should not be negative
+  if (n < 0) {
+    return null;
+  }
+
+  // base case
+    // when n is 0, should return 1;
+  if (n === 0) {
+    return 1;
+  }
+
+  // recursive case
+    // use the current input * input -1 * (input-1-1) * .....
+  return (n * factorial(n - 1));
 };
 
 // 2. Compute the sum of an array of integers.
@@ -252,3 +276,33 @@ var mergeSort = function(array) {
 // obj1 === obj2 // false
 var clone = function(input) {
 };
+
+
+
+
+
+// A few guidelines:
+// Please refrain from sharing solutions. As crazy as it sounds, giving someone the answer doesn't help them. Instead, give them a question that encourages them to think differently.
+
+// Q: Why does my function keep exceeding the call stack?
+
+// A: What's your base case?
+
+// Don't be afraid to pseudocode your algorithm before writing actual code.
+
+// Pseudocode helps you focus on the algorithm instead of getting distracted by syntax.
+
+// This repo requires each function call itself recursively and pays no attention to whether inner recursive functions are defined and called.
+
+// While both are valid uses of recursion, there are important lessons to learn by following the method this repo enforces. Defining inner functions and calling them recursively relies on side effects, while following the more pure approach requires an understanding of how values are passed through the call stack.
+
+// This repo restricts expanding the number of parameters a function accepts.
+
+// Expanding the number of parameters is a valid approach, but has been restricted here to emphasize certain lessons while learning recursion.
+
+// An attempt was made to order prompts by difficulty, but they don't have to be solved in any particular order.
+
+// Feel free to make pull requests or open issues regarding bugs or suggestions.
+
+// Watch, Star, and Fork this repo. You know you want to.
+
