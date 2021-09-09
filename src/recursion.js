@@ -110,21 +110,42 @@ var sumBelow = function(n) {
   // base case, n is 0, return 0;
 
   // recursive case -- 1.given is negative, sumBelow(n+1); 2. given is positive, sumBelow(b - 1)
- if (n === 0) {
-   return 0;
- }
- if (n < 0) {
-   return n + 1 + sumBelow(n + 1);
- } else {
-   return n - 1 + sumBelow(n - 1);
- }
+  if (n === 0) {
+    return 0;
+  }
+  if (n < 0) {
+    return n + 1 + sumBelow(n + 1);
+  } else {
+    return n - 1 + sumBelow(n - 1);
+  }
 
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  // base case -- if y === x, or y - x === 1, return [];
+  // recursive case -- keep push the x+1 into the result array
+
+  var isIncreasing = true;
+  if (x > y) {
+    isIncreasing = false;
+    var oldX = x;
+    var oldY = y;
+    x = oldY;
+    y = oldX;
+  }
+  if (x === y || Math.abs(y - x) === 1) {
+    return [];
+  }
+
+  var result = range(x, y - 1);
+  result.push(y - 1)
+
+  return isIncreasing ? result : result.reverse();
+
 };
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -132,6 +153,11 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+
+  // base case -- exp is 0; return 1;
+  // recursive case -- base * exponent(exp - 1)
+  if (exp === 0) return 1;
+  return exp > 0 ? base * exponent(base, exp - 1) : 1/exponent(base, -exp);
 };
 
 // 8. Determine if a number is a power of two.
