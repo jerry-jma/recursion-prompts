@@ -165,10 +165,25 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+// edge case n = 0
+// base case -- n is 1, return true
+// recursive case -- return powerOfTwo(n/2)
+  if (n === 0) {
+    return false;
+  }
+  if (n === 1) return true;
+  return powerOfTwo(n/2);
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  // base case -- string length is 0, return empty string
+  // recursive case -- take out the last char each time, slice the string, concat it
+  var len = string.length;
+  if (len === 0) return '';
+
+  return string[len - 1].concat(reverse(string.slice(0, -1)));
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
